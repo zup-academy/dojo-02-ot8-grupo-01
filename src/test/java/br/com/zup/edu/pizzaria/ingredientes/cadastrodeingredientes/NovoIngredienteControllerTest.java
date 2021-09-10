@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultMatcher;
@@ -60,12 +61,13 @@ class NovoIngredienteControllerTest {
                 .andExpect(header().exists("Location"))
                 .andExpect(redirectedUrlPattern("/api/ingredientes/{id}"));
 
-        MockHttpServletRequestBuilder request2 = post("/api/ingredientes")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(body));
 
-        mvc.perform(request)
-                .andExpect(status().isBadRequest());
+        MockHttpServletResponse resposta =
+                mvc.perform(request)
+                 .andExpect(status().isBadRequest())
+                 .andReturn().getResponse();
+
+        System.out.println(resposta);
 
     }
 

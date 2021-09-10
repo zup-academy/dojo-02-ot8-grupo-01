@@ -11,10 +11,8 @@ import javax.transaction.Transactional;
 @Transactional
 public class NovaPizzaControllerTest {
 
-    @
-
     @Test
-    public void deveRecusarPizzaVazia(){
+    public void cadastrarPizzaComSucesso(){
 
     }
 
