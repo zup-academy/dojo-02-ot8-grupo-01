@@ -62,10 +62,10 @@ class NovoIngredienteControllerTest {
                 .andExpect(redirectedUrlPattern("/api/ingredientes/{id}"));
 
 
-        MockHttpServletResponse resposta =
+        String resposta =
                 mvc.perform(request)
                  .andExpect(status().isBadRequest())
-                 .andReturn().getResponse();
+                 .andReturn().getResponse().getContentAsString();
 
         System.out.println(resposta);
 
