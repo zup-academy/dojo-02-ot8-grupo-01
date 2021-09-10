@@ -43,7 +43,97 @@ class NovoIngredienteControllerTest {
         mvc.perform(request)
            .andExpect(status().isCreated())
            .andExpect(header().exists("Location"))
-                .andExpect(redirectedUrlPattern("/api/ingredientes/\\d"));
+                .andExpect(redirectedUrlPattern("/api/ingredientes/{id}"));
 
     }
+
+    @Test
+    void deveRecusarIngredientsComNomeRepetidos() throws Exception {
+
+        NovoIngredienteRequest body = new NovoIngredienteRequest("Presunto", new BigDecimal("2.0"), 200);
+        MockHttpServletRequestBuilder request = post("/api/ingredientes")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(body));
+
+        mvc.perform(request)
+                .andExpect(status().isCreated())
+                .andExpect(header().exists("Location"))
+                .andExpect(redirectedUrlPattern("/api/ingredientes/{id}"));
+
+        MockHttpServletRequestBuilder request2 = post("/api/ingredientes")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(body));
+
+        mvc.perform(request)
+                .andExpect(status().isBadRequest());
+
+    }
+
+
+    @Test
+    void deveRecusarIngredientsComNomeEmBranco() throws Exception {
+
+        NovoIngredienteRequest body = new NovoIngredienteRequest("", new BigDecimal("2.0"), 200);
+        MockHttpServletRequestBuilder request = post("/api/ingredientes")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(body));
+
+        mvc.perform(request)
+                .andExpect(status().isBadRequest());
+
+    }
+
+    @Test
+    void deveRecusarIngredientsComNomeEmNull() throws Exception {
+
+        NovoIngredienteRequest body = new NovoIngredienteRequest(null, new BigDecimal("2.0"), 200);
+        MockHttpServletRequestBuilder request = post("/api/ingredientes")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(body));
+
+        mvc.perform(request)
+                .andExpect(status().isBadRequest());
+
+    }
+
+
+    @Test
+    void deveRecusarIngredientsComQuantidadeNegativa() throws Exception {
+
+        NovoIngredienteRequest body = new NovoIngredienteRequest("Mussarela", new BigDecimal("2.0"), -200);
+        MockHttpServletRequestBuilder request = post("/api/ingredientes")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(body));
+
+        mvc.perform(request)
+                .andExpect(status().isBadRequest());
+
+    }
+
+    @Test
+    void deveRecusarIngredientsComPrecoNegativo() throws Exception {
+
+        NovoIngredienteRequest body = new NovoIngredienteRequest("Mussarela", new BigDecimal("-2.0"), 200);
+        MockHttpServletRequestBuilder request = post("/api/ingredientes")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(body));
+
+        mvc.perform(request)
+                .andExpect(status().isBadRequest());
+
+    }
+
+    @Test
+    void deveRecusarIngredientsComPrecoNull() throws Exception {
+
+        NovoIngredienteRequest body = new NovoIngredienteRequest("Mussarela", null, 200);
+        MockHttpServletRequestBuilder request = post("/api/ingredientes")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(new ObjectMapper().writeValueAsString(body));
+
+        mvc.perform(request)
+                .andExpect(status().isBadRequest());
+
+    }
+
 }
