@@ -38,12 +38,15 @@ public class Pizza {
     public Pizza() {
     }
 
+    //Reporovado no teste, porque BigDecimal tem valor imutável
+    //Se for preciso fazer cálculo com BigDecimal, é preciso usar o valor retornado e fazer nova atribuição, porque
+    //O objeto BigDecimal é imutável
     private void calcularPreco() {
-        this.preco.add(PRECO_MASSA);
-        this.preco.add(PRECO_MAO_DE_OBRA);
-        this.ingredientes.stream()
-                .map(Ingrediente::getPreco)
-                .forEach(preco::add);
+        this.preco = this.PRECO_MASSA;
+        this.preco = this.preco.add(PRECO_MAO_DE_OBRA);
+        for (Ingrediente ingrediente: ingredientes){
+            this.preco = this.preco.add(ingrediente.getPreco());
+        }
     }
 
     public Long getId() {
