@@ -20,7 +20,7 @@ public class Pedido {
     @OneToMany(mappedBy = "pedido")
     private List<Item> itens = new ArrayList<>();
 
-    private BigDecimal total;
+    private BigDecimal total = new BigDecimal(0);
 
     /**
      * @deprecated para uso do hibernate apenas
@@ -39,5 +39,9 @@ public class Pedido {
 
     public Long getId() {
         return id;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
     }
 }
