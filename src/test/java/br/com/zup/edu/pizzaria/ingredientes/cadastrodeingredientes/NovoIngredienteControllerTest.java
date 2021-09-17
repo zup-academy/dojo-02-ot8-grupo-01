@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 
 import javax.transaction.Transactional;
@@ -57,12 +58,10 @@ class NovoIngredienteControllerTest {
                 .andExpect(redirectedUrlPattern("/api/ingredientes/{id}"));
 
 
-        String resposta =
-                mvc.perform(request)
+        mvc.perform(request)
                  .andExpect(status().isBadRequest())
-                 .andReturn().getResponse().getContentAsString();
-
-        System.out.println(resposta);
+                 .andExpect(MockMvcResultMatchers.jsonPath("$.errors[].defaultMessage")
+                         .value("O Valor já esta cadastrado"));
 
     }
 

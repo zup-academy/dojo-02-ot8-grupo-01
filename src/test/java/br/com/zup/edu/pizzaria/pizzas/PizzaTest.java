@@ -74,9 +74,7 @@ class PizzaTest {
             totalIngredientes = totalIngredientes.add(i.getPreco());
         }
 
-        Assert.isTrue( valorTotalPizza.compareTo(BigDecimal(45)) == 0, "Pizza tem valor maior que os ingredientes");
-
-
+        Assert.isTrue( valorTotalPizza.compareTo(new BigDecimal(45)) == 0, "Pizza tem valor maior que os ingredientes");
     }
 
 
