@@ -1,8 +1,11 @@
 package br.com.zup.edu.pizzaria.pizzas;
 
 import br.com.zup.edu.pizzaria.ingredientes.Ingrediente;
+import org.springframework.util.Assert;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +26,11 @@ public class Pizza {
     private BigDecimal preco;
 
     @ManyToMany
+    @Size(min=1)
+    @NotNull
     private List<Ingrediente> ingredientes = new ArrayList<>();
 
-    public Pizza(String sabor, List<Ingrediente> ingredientes) {
+    public Pizza(String sabor,  List<Ingrediente> ingredientes) {
         this.sabor = sabor;
         this.ingredientes = ingredientes;
         calcularPreco();

@@ -67,9 +67,9 @@ public class NovaPizzaControllerTest {
         List<Long> ingredientesLongDoMetodo = List.of(id1, id2, id3);
         ingredientesLongDaClasse.addAll(ingredientesLongDoMetodo);
 
-        ingrediente1 = new Ingrediente("farinha" + d, 10, new BigDecimal(10.50) );
-        ingrediente2 = new Ingrediente("molho" + d, 5, new BigDecimal(1.50) );
-        ingrediente3 = new Ingrediente("oregano" + d, 5, new BigDecimal(3.50) );
+        ingrediente1 = new Ingrediente("farinha" + d, 10, new BigDecimal(2) );
+        ingrediente2 = new Ingrediente("molho" + d, 5, new BigDecimal(4) );
+        ingrediente3 = new Ingrediente("oregano" + d, 5, new BigDecimal(5) );
 
         id1 = ingredienteRepository.save(ingrediente1).getId();
         id2 = ingredienteRepository.save(ingrediente2).getId();
@@ -94,6 +94,7 @@ public class NovaPizzaControllerTest {
                 .andExpect(header().exists("Location"))
                 .andExpect(redirectedUrlPattern("/api/pizzas/{id}"));
     }
+
 
 
     @Test
