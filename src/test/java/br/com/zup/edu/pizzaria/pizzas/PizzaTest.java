@@ -16,16 +16,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class PizzaTest {
 
 
-
-
-    @Test
-    @DisplayName("deve impedir ciracao de pizza com sem ingredientes")
-    void deveImpedirCiracaoDePizzaComSemIngredientes() {
-        Pizza pizza = new Pizza("Maçã", Arrays.asList());
-        Assert.isNull(pizza, "pizza não pode ser sem ingredientes");
-    }
-
-
     @Test
     @DisplayName("deve criar uma pizza com sucesso")
     void deveCriarUmaPizzaComSucesso() {

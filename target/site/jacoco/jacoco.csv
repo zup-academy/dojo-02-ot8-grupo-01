@@ -1,0 +1,21 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+pizzaria,br.com.zup.edu.pizzaria.health,MeuHealthCheck,25,3,0,0,5,1,1,1,1,1
+pizzaria,br.com.zup.edu.pizzaria.ingredientes,Ingrediente,32,21,6,0,5,8,5,4,2,4
+pizzaria,br.com.zup.edu.pizzaria.shared.validators,UniqueValueValidator,0,36,0,0,0,10,0,3,0,3
+pizzaria,br.com.zup.edu.pizzaria.pedidos.novopedido,ItemRequest,18,0,0,0,3,0,2,0,2,0
+pizzaria,br.com.zup.edu.pizzaria.pedidos.novopedido,EnderecoRequest,30,0,0,0,8,0,3,0,3,0
+pizzaria,br.com.zup.edu.pizzaria.pedidos.novopedido,NovoPedidoController,26,9,0,0,5,4,1,1,1,1
+pizzaria,br.com.zup.edu.pizzaria.pedidos.novopedido,NovoPedidoRequest,36,0,0,0,9,0,3,0,3,0
+pizzaria,br.com.zup.edu.pizzaria.ingredientes.cadastrodeingredientes,NovoIngredienteController,0,30,0,0,0,8,0,2,0,2
+pizzaria,br.com.zup.edu.pizzaria.ingredientes.cadastrodeingredientes,NovoIngredienteRequest,0,22,0,0,0,6,0,2,0,2
+pizzaria,br.com.zup.edu.pizzaria,PizzariaApplication,5,3,0,0,2,1,1,1,1,1
+pizzaria,br.com.zup.edu.pizzaria.pedidos,TipoDeBorda.new TipoDeBorda() {...},5,5,0,0,1,1,1,1,1,1
+pizzaria,br.com.zup.edu.pizzaria.pedidos,TipoDeBorda.new TipoDeBorda() {...},5,5,0,0,1,1,1,1,1,1
+pizzaria,br.com.zup.edu.pizzaria.pedidos,Pedido,3,47,0,0,1,10,1,4,1,4
+pizzaria,br.com.zup.edu.pizzaria.pedidos,TipoDeBorda.new TipoDeBorda() {...},0,7,0,0,0,2,0,2,0,2
+pizzaria,br.com.zup.edu.pizzaria.pedidos,TipoDeBorda,0,34,0,0,0,4,0,1,0,1
+pizzaria,br.com.zup.edu.pizzaria.pedidos,Item,0,25,0,0,0,8,0,3,0,3
+pizzaria,br.com.zup.edu.pizzaria.pedidos,Endereco,3,15,0,0,1,6,1,1,1,1
+pizzaria,br.com.zup.edu.pizzaria.pizzas,Pizza,0,72,0,2,0,18,0,7,0,6
+pizzaria,br.com.zup.edu.pizzaria.pizzas.cadastropizza,NovaPizzaController,0,35,0,0,0,9,0,2,0,2
+pizzaria,br.com.zup.edu.pizzaria.pizzas.cadastropizza,NovaPizzaRequest,0,21,0,0,0,6,0,2,0,2

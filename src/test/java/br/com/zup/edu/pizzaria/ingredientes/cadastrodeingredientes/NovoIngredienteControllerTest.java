@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 
@@ -59,9 +60,8 @@ class NovoIngredienteControllerTest {
 
 
         mvc.perform(request)
-                 .andExpect(status().isBadRequest());
-//                 .andExpect(MockMvcResultMatchers.jsonPath("$.errors.[0].defaultMessage")
-//                         .value("O Valor já esta cadastrado"));
+                 .andExpect(status().isBadRequest())
+                .andDo(MockMvcResultHandlers.print());
 
     }
 
